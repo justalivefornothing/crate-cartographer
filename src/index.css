@@ -1,0 +1,112 @@
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-ink-950: #06122a;
+  --color-ink-900: #0b1a33;
+  --color-ink-800: #112544;
+  --color-ink-700: #1a3459;
+  --color-ink-600: #26476f;
+  --color-line: #67e8f9;
+  --color-paper: #d9f3fb;
+  --color-crate: #f2c46d;
+  --color-crate-dark: #a5600c;
+  --color-alert: #ff5d73;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-paper);
+  background-color: var(--color-ink-900);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-line) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-line) 7%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--color-line) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-line) 14%, transparent) 1px, transparent 1px);
+  background-size:
+    16px 16px,
+    16px 16px,
+    80px 80px,
+    80px 80px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.label {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--color-line) 75%, white);
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-sm border px-3 py-1.5 text-xs font-medium tracking-wide select-none;
+  border-color: color-mix(in srgb, var(--color-line) 35%, transparent);
+  background: color-mix(in srgb, var(--color-line) 6%, transparent);
+  color: var(--color-paper);
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    transform 80ms ease;
+}
+.btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-line) 16%, transparent);
+  border-color: color-mix(in srgb, var(--color-line) 70%, transparent);
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: color-mix(in srgb, var(--color-line) 22%, transparent);
+  border-color: color-mix(in srgb, var(--color-line) 80%, transparent);
+}
+.btn-primary:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-line) 34%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-line);
+  outline-offset: 2px;
+}
+
+.panel {
+  border: 1px solid color-mix(in srgb, var(--color-line) 28%, transparent);
+  background: color-mix(in srgb, var(--color-ink-950) 82%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes badge-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.badge-in {
+  animation: badge-in 160ms ease-out both;
+}
